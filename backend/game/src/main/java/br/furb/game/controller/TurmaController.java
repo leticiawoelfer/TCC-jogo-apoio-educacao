@@ -12,57 +12,59 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.furb.game.model.Aluno;
-import br.furb.game.model.Professor;
-import br.furb.game.service.ProfessorService;
+import br.furb.game.model.Turma;
+import br.furb.game.service.TurmaService;
 
 @RestController
-public class ProfessorController {
+public class TurmaController {
 	
 	@Autowired
-	ProfessorService professorService;
+	TurmaService turmaService;
 	
-	@RequestMapping(value = "/professor", method = RequestMethod.POST)
-	public ResponseEntity<Professor> save(@RequestBody Professor professor) {
+	@RequestMapping(value = "/turma", method = RequestMethod.POST)
+	public ResponseEntity<Turma> save(@RequestBody Turma turma) {
 		try {
-			return ResponseEntity.ok(professorService.save(professor));
+			return ResponseEntity.ok(turmaService.save(turma));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
 
-	@RequestMapping(value = "/professor", method = RequestMethod.GET)
-	public ResponseEntity<List<Professor>> findAll() {
+	@RequestMapping(value = "/turma", method = RequestMethod.GET)
+	public ResponseEntity<List<Turma>> findAll() {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(professorService.findAll());
+			return ResponseEntity.status(HttpStatus.OK).body(turmaService.findAll());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
 
-	@RequestMapping(value = "/professor/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Professor> findById(@PathVariable("id") long id) {
+	@RequestMapping(value = "/turma/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Turma> findById(@PathVariable("id") long id) {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(professorService.findById(id));
+			return ResponseEntity.status(HttpStatus.OK).body(turmaService.findById(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
 
-	@RequestMapping(value = "/professor/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Professor> update(@PathVariable(value = "id") long id, @RequestBody Professor professor) {
+	@RequestMapping(value = "/turma/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Turma> update(@PathVariable(value = "id") long id, @RequestBody Turma turma) {
 		try {
-			Professor professorAnterior = professorService.findById(id);
-			
-			return ResponseEntity.ok(professorService.save(professorAnterior));
+			Turma turmaAnterior = turmaService.findById(id);
+//			alunoAnterior.set
+//			alunoAnterior.setCodigo(aluno.getCodigo());
+//			alunoAnterior.setNome(aluno.getNome());
+			return ResponseEntity.ok(turmaService.save(turmaAnterior));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
 
-	@RequestMapping(value = "/professor/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/turma/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteById(@PathVariable("id") long id) {
 		try {
-			professorService.deleteById(id);
+			turmaService.deleteById(id);
 			return ResponseEntity.status(HttpStatus.OK).body(null);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

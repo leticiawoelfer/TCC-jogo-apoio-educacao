@@ -3,10 +3,12 @@ package br.furb.game.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.furb.game.model.Aluno;
 import br.furb.game.repository.AlunoRepository;
 
+@Service
 public class AlunoServiceImpl implements AlunoService {
 
 	@Autowired

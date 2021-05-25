@@ -7,10 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Table(name = "escola")
 @Entity
@@ -20,17 +18,26 @@ public class Escola {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, updatable = false)
 	private Integer id;
+	
 	private String nome;
+	
 	private String logradouro;
+	
 	private String numero;
+	
 	private String cep;
+	
 	private String bairro;
+	
 	private String cidade;
+	
 	private String estado;
 
 	@OneToOne
-	private Coordenador diretor;//seleciona ou cadastra um novo
+	private Coordenador coordenador;//seleciona ou cadastra um novo
+	
 	private ArrayList<Professor> professores;
+	
 	
 	public Integer getId() {
 		return id;
@@ -80,17 +87,17 @@ public class Escola {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}	
-	public Integer getIdDiretor() {
-		return idDiretor;
+	public Coordenador getCoordenador() {
+		return coordenador;
 	}
-	public void setIdDiretor(Integer idDiretor) {
-		this.idDiretor = idDiretor;
+	public void setCoordenador(Coordenador coordenador) {
+		this.coordenador = coordenador;
 	}
-	public Professor getDiretor() {
-		return diretor;
+	public ArrayList<Professor> getProfessores() {
+		return professores;
 	}
-	public void setDiretor(Professor diretor) {
-		this.diretor = diretor;
+	public void setProfessores(ArrayList<Professor> professores) {
+		this.professores = professores;
 	}
 	
 }
