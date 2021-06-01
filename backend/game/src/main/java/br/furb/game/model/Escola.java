@@ -36,6 +36,7 @@ public class Escola {
 	@OneToOne
 	private Coordenador coordenador;//seleciona ou cadastra um novo
 	
+	//transient, pois quem vai ter idEscola vai ser professor
 	private ArrayList<Professor> professores;
 	
 	

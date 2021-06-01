@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.furb.game.model.Aluno;
 import br.furb.game.model.Turma;
 import br.furb.game.service.TurmaService;
 

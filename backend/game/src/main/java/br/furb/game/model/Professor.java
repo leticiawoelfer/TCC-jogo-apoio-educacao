@@ -26,6 +26,9 @@ public class Professor {
 	
 	private String senha;
 	
+	private Escola escola;
+	//professor tem um idEscola
+	
 	//um professor para muitas turmas
 	@OneToMany(mappedBy = "professor")
 	private List<Turma> turmas;
