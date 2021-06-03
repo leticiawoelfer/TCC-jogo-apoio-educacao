@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,16 +25,21 @@ public class Professor {
 	
 	private String nome;
 	
+	private TipoProfessor tipo;
+	
 	private String login;
 	
 	private String senha;
 	
+	@ManyToOne
+	@OneToOne(mappedBy = "diretor")
+	@JoinColumn(name = "idEscola")
 	private Escola escola;
-	//professor tem um idEscola
+	
 	
 	//um professor para muitas turmas
-	@OneToMany(mappedBy = "professor")
-	private List<Turma> turmas;
+	//@OneToMany(mappedBy = "professor")
+	//private List<Turma> turmas;
 	
 	//não precisa da manyToMany para professor e escola, o que vai ligar eles vai ser a turma
 

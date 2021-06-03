@@ -55,12 +55,10 @@ public class EscolaController {
 			escolaAnterior.setBairro(escola.getBairro());
 			escolaAnterior.setCep(escola.getCep());
 			escolaAnterior.setCidade(escola.getCidade());
-			escolaAnterior.setCoordenador(escola.getCoordenador());
 			escolaAnterior.setEstado(escola.getEstado());
 			escolaAnterior.setLogradouro(escola.getLogradouro());
 			escolaAnterior.setNome(escola.getNome());
 			escolaAnterior.setNumero(escola.getNumero());
-			escolaAnterior.setProfessores(escola.getProfessores());
 			return ResponseEntity.ok(escolaService.save(escolaAnterior));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

@@ -20,10 +20,13 @@ public class Aluno {
 	
 	private String nome;
 	
-	@ManyToOne //aqui tem o join colunm porque é aqui que vai ter a FK da Turma
-	@JoinColumn(name = "idTurma")
-	
-	private Turma turma;//idTurma - o Aluno só vai estar em uma turma
-	
+	@ManyToOne
+	@JoinColumn(name = "idTurma")	
+	private Turma turma;
+		
 	private Date dataNasc;
+	
+	private Integer idade;
+	
+	private AnoLetivo anoLetivo;
 }
