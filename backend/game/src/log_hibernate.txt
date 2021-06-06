@@ -1,0 +1,18 @@
+Hibernate: create table alternativa (id int4 not null, correta boolean not null, descricao varchar(255), id_questao int4, primary key (id))
+Hibernate: create table aluno (id int4 not null, ano_letivo int4, data_nasc date, idade int4, nome varchar(255), id_turma int4, primary key (id))
+Hibernate: create table escola (id int4 not null, bairro varchar(255), cep varchar(255), cidade varchar(255), estado varchar(255), logradouro varchar(255), nome varchar(255), numero varchar(255), id_diretor int4, primary key (id))
+Hibernate: create table partida (id int4 not null, data_criacao date, materia int4, qnt_jogada int4, id_professor int4, primary key (id))
+Hibernate: create table partida_questao (id_partida int4 not null, id_questao int4 not null)
+Hibernate: create table professor (id int4 not null, login varchar(255), nome varchar(255), senha varchar(255), tipo int4, id_escola int4, primary key (id))
+Hibernate: create table questao (id int4 not null, descriçao varchar(255), materia int4, primary key (id))
+Hibernate: create table turma (id int4 not null, codigo varchar(255), id_escola int4, id_professor_regente int4, primary key (id))
+Hibernate: create sequence hibernate_sequence start 1 increment 1
+Hibernate: alter table if exists alternativa add constraint FK8ocur5fcgko5qgj3vgpa53aan foreign key (id_questao) references questao
+Hibernate: alter table if exists aluno add constraint FK6u9nh0rofks23793tl5j0f7v3 foreign key (id_turma) references turma
+Hibernate: alter table if exists escola add constraint FKo0po0el0ry6y2789shegodxe4 foreign key (id_diretor) references professor
+Hibernate: alter table if exists partida add constraint FK7r644u7vcu932n1xkxix780ed foreign key (id_professor) references professor
+Hibernate: alter table if exists partida_questao add constraint FKg169yfg5i0mv2bs8adyvlqg9g foreign key (id_questao) references questao
+Hibernate: alter table if exists partida_questao add constraint FKbwpbns50cijj9qi1t47c1rtnd foreign key (id_partida) references partida
+Hibernate: alter table if exists professor add constraint FKsqsk7v7dcv2y1kj902gyl2d85 foreign key (id_escola) references escola
+Hibernate: alter table if exists turma add constraint FKlnjt0jfh125qfvhdo3x9jh4hq foreign key (id_escola) references escola
+Hibernate: alter table if exists turma add constraint FKqylwulpsomgst6ipi4r1vn4rw foreign key (id_professor_regente) references professor

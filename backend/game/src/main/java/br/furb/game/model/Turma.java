@@ -1,6 +1,6 @@
 package br.furb.game.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,23 +19,58 @@ public class Turma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
 	private String codigo;
 	
 	@ManyToOne
 	@JoinColumn(name = "idEscola")
 	private Escola escola;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "idProfessorRegente")
-//	private Professor professorRegente;
+	@OneToOne
+	@JoinColumn(name = "idProfessorRegente")
+	private Professor professorRegente;
 	
-//	@OneToMany(mappedBy = "turma")
-//	private ArrayList<Aluno> alunos;
-	
+	@OneToMany(mappedBy = "turma")
+	private List<Aluno> alunos;
 
-	
-	
-	//aqui vai ter idEscola
-	//idProfessor (dono da turma)
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public Escola getEscola() {
+		return escola;
+	}
+
+	public void setEscola(Escola escola) {
+		this.escola = escola;
+	}
+
+	public Professor getProfessorRegente() {
+		return professorRegente;
+	}
+
+	public void setProfessorRegente(Professor professorRegente) {
+		this.professorRegente = professorRegente;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}	
 
 }

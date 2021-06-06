@@ -30,16 +30,60 @@ public class Partida {
 	
 	private Date dataCriacao;
 	
-	private Professor criador;
-	
-	private Integer qntJogada;
-	
-	private Materia materia;
-	
 	@ManyToOne
 	@JoinColumn(name = "idProfessor")//nome da FK
 	private Professor professor;
 	
+	private Integer qntJogada;
+	
+	private Materia materia;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<Questao> getQuestoes() {
+		return questoes;
+	}
+
+	public void setQuestoes(List<Questao> questoes) {
+		this.questoes = questoes;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Integer getQntJogada() {
+		return qntJogada;
+	}
+
+	public void setQntJogada(Integer qntJogada) {
+		this.qntJogada = qntJogada;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
 	
 }

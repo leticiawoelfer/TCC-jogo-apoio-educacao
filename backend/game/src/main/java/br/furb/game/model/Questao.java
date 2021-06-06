@@ -18,7 +18,7 @@ public class Questao {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private String titulo;
+	private String enunciado;
 	
 	@OneToMany(mappedBy = "questao")
 	private List<Alternativa> alternativas;
@@ -27,4 +27,45 @@ public class Questao {
 	
 	@ManyToMany(mappedBy = "questoes")
 	private List<Partida> partidas;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getEnunciado() {
+		return enunciado;
+	}
+
+	public void setEnunciado(String enunciado) {
+		this.enunciado = enunciado;
+	}
+
+	public List<Alternativa> getAlternativas() {
+		return alternativas;
+	}
+
+	public void setAlternativas(List<Alternativa> alternativas) {
+		this.alternativas = alternativas;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public List<Partida> getPartidas() {
+		return partidas;
+	}
+
+	public void setPartidas(List<Partida> partidas) {
+		this.partidas = partidas;
+	}
+	
 }

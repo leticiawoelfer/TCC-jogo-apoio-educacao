@@ -24,6 +24,36 @@ public class Alternativa {
 	@JoinColumn(name = "idQuestao")
 	private Questao questao;
 
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public boolean isCorreta() {
+		return correta;
+	}
+
+	public void setCorreta(boolean correta) {
+		this.correta = correta;
+	}
+
+	public Questao getQuestao() {
+		return questao;
+	}
+
+	public void setQuestao(Questao questao) {
+		this.questao = questao;
+	}
 
 }
