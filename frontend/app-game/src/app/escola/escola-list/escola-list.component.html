@@ -1,0 +1,81 @@
+<h1 class="mt-4">Escolas</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{mensagemSucesso}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngFor="let mensagemErro of mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-warning" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i>Novo
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Diretor</td>
+                        <td>Endereço</td>
+                        <td>Cidade</td>
+                        <td>UF</td>                        
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let escola of escolas">
+                        <td>{{ escola.id }}</td>
+                        <td>{{ escola.nome }}</td>
+                        <!--<td>{{ escola.diretor.nome }}</td>-->
+                        <td>Bruno Oliveira Pereira Bergamaschi</td>
+                        <td>{{ escola.logradouro }}, {{ escola.numero }} - {{ escola.cep }}</td>
+                        <td>{{ escola.cidade }}</td>
+                        <td>{{ escola.estado }}</td>
+                        <td>
+
+                            <button class="btn btn-primary" routerLink="/escola-form/{{escola.id}}">
+                                <i class="fa fa-pen-square"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalExclusao"
+                                (click)="selecionaEscola(escola)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal" id="modalExclusao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmar</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" *ngIf="escolaSelecionada">
+                    Confirma a exclusão da escola: {{escolaSelecionada.nome}} ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        (click)="deletarEscola()">Confirma</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
